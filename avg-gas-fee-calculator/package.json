@@ -1,7 +1,7 @@
 {
-  "name": "get-average-tx-gas-fee",
+  "name": "avg-txs-gas-fee-calc",
   "version": "1.0.0",
-  "description": "Calculate the average gas fees for the latest transactions on RSK",
+  "description": "Calculate the average gas fees paid for the latest transactions on RSK",
   "main": "index.js",
   "scripts": {
     "start": "./index.js"

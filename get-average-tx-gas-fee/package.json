@@ -1,0 +1,23 @@
+{
+  "name": "get-average-tx-gas-fee",
+  "version": "1.0.0",
+  "description": "Calculate the average gas fees for the latest transactions on RSK",
+  "main": "index.js",
+  "scripts": {
+    "start": "./index.js"
+  },
+  "keywords": [
+    "rsk",
+    "web3.js",
+    "javascript"
+  ],
+  "author": "Aleks Shenshin, Brendan Graetz",
+  "license": "GPL-3.0",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "p-map": "^5.3.0",
+    "web3": "^1.7.1"
+  }
+}

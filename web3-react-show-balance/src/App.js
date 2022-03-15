@@ -45,6 +45,9 @@ function App() {
         <>
           <p>Connected with {activeAccount}</p>
           <p>My balance: {activeBalance} RBTC</p>
+
+          {/* let a user enter any address and see its balance */}
+
           <p>Check RSK account:</p>
           <input
             type="text"

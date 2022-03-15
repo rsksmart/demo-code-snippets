@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 
 function useBalance(web3, account, setLoading, setErrorMessage) {
   const [balance, setBalance] = useState('?');

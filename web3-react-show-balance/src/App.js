@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import useWeb3 from './useWeb3';
-import useBalance from './useBalance';
+import useWeb3 from './hooks/useWeb3';
+import useBalance from './hooks/useBalance';
 import './App.css';
 
 function App() {

@@ -16,5 +16,6 @@
       "import/extensions": "off",
       "no-console": "off",
       "prettier/prettier": ["error"]
-    }
+    },
+    "root": true
 }

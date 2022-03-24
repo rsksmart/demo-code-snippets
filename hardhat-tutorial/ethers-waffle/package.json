@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "regtest": "npx hardhat test --network rskregtest",
+    "testnet": "npx hardhat test --network rsktestnet",
     "ganache": "npx hardhat test --network ganache",
     "hardhat": "npx hardhat test --network hardhat",
     "test": "npm run regtest"

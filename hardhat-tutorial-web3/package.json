@@ -1,0 +1,21 @@
+{
+  "name": "hardhat-tutorial-web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test --network rskregtest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-truffle5": "^2.0.5",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "chai-bn": "^0.3.1",
+    "hardhat": "^2.9.1",
+    "web3": "^1.7.1"
+  }
+}

@@ -14,5 +14,5 @@ npm install
 ## Run tests on RSK regtest network
 
 ```bash
-npm run regtest
+npm run test
 ```

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
 const Token = artifacts.require('Token');
 const { expect } = require('chai');

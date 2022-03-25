@@ -17,8 +17,10 @@ describe('Transactions', () => {
     console.log('Before transction');
     console.log('Owner balance: ', await hardhatToken.balanceOf(owner.address));
     console.log('Addr1 balance: ', await hardhatToken.balanceOf(addr1.address));
+
     // Transfer 50 tokens from owner to addr1
     await hardhatToken.connect(owner).transfer(addr1.address, 50);
+
     console.log('After transction');
     console.log('Owner balance: ', await hardhatToken.balanceOf(owner.address));
     console.log('Addr1 balance: ', await hardhatToken.balanceOf(addr1.address));

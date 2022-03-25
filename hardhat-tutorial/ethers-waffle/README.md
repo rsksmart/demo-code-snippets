@@ -17,11 +17,18 @@ npm install npm --global # Upgrade npm to the latest version
 ```bash
 npm install
 ```
-## Runn Hardhat tests
+## Run Hardhat tests
 On Hardhat network:
 
 ```bash
 npm run hardhat
+```
+Tests pass.
+
+On Ganche network:
+
+```bash
+npm run ganache
 ```
 Tests pass.
 

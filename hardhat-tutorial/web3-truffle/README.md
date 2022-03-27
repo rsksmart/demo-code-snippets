@@ -1,4 +1,4 @@
-# Using Hardhat to test smart contracts on RSK Regtest network
+# Using Hardhat (web3-truffle) to test smart contracts on RSK Regtest network
 ## Setup up environment (mac):
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash

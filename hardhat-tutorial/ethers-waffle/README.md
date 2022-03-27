@@ -1,9 +1,4 @@
-I encounter 2 problems while testing smart contracts with Hardhat
-
-1. I can't send transactions via ether.js to a function of a smart contract deployed on RSK regtest. However the same transactions work on ganache or hardhat test networks. 
-2. Mnemonic phrase produces "wrong" address 
-
-To reproduce:
+# Using Hardhat (ethers-waffle) to test smart contracts on RKS
 
 ## Setup up environment (mac):
 ```bash
@@ -23,27 +18,15 @@ On Hardhat network:
 ```bash
 npm run hardhat
 ```
-Tests pass.
 
-On Ganche network:
-
-```bash
-npm run ganache
-```
-Tests pass.
-
-On RSK regtest network:
+On RSK regtest:
 
 ```bash
 npm run regtest
 ```
-Tests fail.
 
-If I try to run the same test on RSK testnet:
+On RSK testnet:
 
 ```bash
 npm run testnet
 ```
-Hardhat generates wrong addresses from the mnemonic, and the test fails
-with an error saing 
-`ProviderError: the sender account doesn't exist`

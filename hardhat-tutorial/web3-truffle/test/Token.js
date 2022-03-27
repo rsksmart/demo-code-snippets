@@ -93,9 +93,8 @@ contract('Hardhat token', (accounts) => {
 
       // Try to send 1 token from addr1 (0 tokens) to owner (1000000 tokens).
       // `require` will evaluate false and revert the transaction.
-      await expect(
-        hardhatToken.transfer(owner, 1, { from: addr1 }),
-      ).to.eventually.be.rejectedWith();
+      await expect(hardhatToken.transfer(owner, 1, { from: addr1 })).to
+        .eventually.be.rejected;
 
       // Owner balance shouldn't have changed.
       await expect(

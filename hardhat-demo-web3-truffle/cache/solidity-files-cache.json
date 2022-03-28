@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/ales/Work/IOV/demo-code-snippets/hardhat-tutorial/ethers-waffle/contracts/Token.sol": {
-      "lastModificationDate": 1648046288420,
+    "/Users/ales/Work/IOV/demo-code-snippets/hardhat-demo-web3-truffle/contracts/Token.sol": {
+      "lastModificationDate": 1648159780782,
       "contentHash": "c2f95454a95defa9ca46f27cf206ddf6",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {

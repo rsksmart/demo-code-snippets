@@ -1,0 +1,24 @@
+{
+  "name": "hardhat-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "regtest": "npx hardhat test --network rskregtest",
+    "testnet": "npx hardhat test --network rsktestnet",
+    "hardhat": "npx hardhat test --network hardhat",
+    "test": "npm run regtest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.1",
+    "hardhat": "^2.6.8"
+  }
+}

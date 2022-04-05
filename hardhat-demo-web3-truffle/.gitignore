@@ -1,0 +1,14 @@
+#dependencies
+node_modules
+node_modules/
+
+#misc
+.vscode/
+.DS_Store
+package-lock.json
+.env
+old.env
+
+#truffle
+artifacts/
+cache/

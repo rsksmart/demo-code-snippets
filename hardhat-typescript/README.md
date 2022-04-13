@@ -16,7 +16,7 @@ npm install npm --global # Upgrade npm to the latest version
 npm install
 ```
 
-## Compile smart contracts
+## Compile smart contracts and create TypeChain types
 ```bash
 npm run compile
 ```

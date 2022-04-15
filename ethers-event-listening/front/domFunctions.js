@@ -1,12 +1,21 @@
 /**
- * Displays Error message on the page
+ * Displays Error message on the page. Hides in few seconds
  * @param {string} message error message. Empty string hides the error message
  */
 export function showError(message) {
   const errorDiv = document.getElementById('error');
-  errorDiv.style.display = message ? 'block' : 'none';
-  errorDiv.innerHTML = message ?? '';
-  if (message) console.error(message);
+  const hideDiv = () => {
+    errorDiv.innerHTML = '';
+    errorDiv.style.display = 'none';
+  };
+  if (message) {
+    errorDiv.innerHTML = message;
+    errorDiv.style.display = 'block';
+    console.error(message);
+    setTimeout(hideDiv, 5000);
+  } else {
+    hideDiv();
+  }
 }
 
 /**

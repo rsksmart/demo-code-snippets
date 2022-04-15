@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Smart contracts event listening via Ethers.js</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+</head>
+<body>
+  <div id="provider-disconnected">
+    <button id="connect-button">Connect Metamask</button>
+  </div>
+  <div id="provider-connected">
+    <div>
+      Meow amount:
+      <input
+        id="meow-amount"
+        type="number"
+        min="1"
+        max="10000"
+        value="10"
+        />
+        to address:
+        <input
+        id="to-address"
+        type="text"
+        value="0x55C7891137819BBa7502b6BDA5A40FBB79c76f6D"
+      />
+    </div>
+    <button id="transfer-button">Transfer Meows</button>
+    <button id="disconnect-button">Disconnect provider</button>
+    <div id="event">
+      <h3>Transfer event registered</h3>
+      <p>from: <span id="event-from"></span></p>
+      <p>to: <span id="event-to"></span></p>
+      <p>amount: <span id="event-amount"></span></p>
+    </div>
+  </div>
+  <div id="loading">
+    Loading...
+  </div>
+  <div id="error">Error</div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

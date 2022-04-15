@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const hre = require('hardhat');
-const { frontendPath } = require('../project.config.js');
+const { frontendPaths } = require('../project.config.js');
 
 function mkDirIfNotExists(dirPath) {
   if (!fs.existsSync(dirPath)) {
@@ -17,14 +17,17 @@ function mkDirIfNotExists(dirPath) {
  */
 async function writeArtifactToFrontend(name, address) {
   const { abi } = await hre.artifacts.readArtifact(name);
-  const contractData = {
+  const contractData = JSON.stringify({
     address,
     abi,
-  };
-  mkDirIfNotExists(frontendPath);
-  const fileName = path.join(frontendPath, `${name}.json`);
-  fs.writeFileSync(fileName, JSON.stringify(contractData), 'utf8');
-  console.log(`${name} ABI and address were written to ${fileName}`);
+  });
+  console.log(`${name} ABI and address were written to`);
+  frontendPaths.forEach((frontendPath) => {
+    mkDirIfNotExists(frontendPath);
+    const fileName = path.join(frontendPath, `${name}.json`);
+    fs.writeFileSync(fileName, contractData, 'utf8');
+    console.log(fileName);
+  });
 }
 
 module.exports = writeArtifactToFrontend;

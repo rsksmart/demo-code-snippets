@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "off",
+    "import/extensions": "off",
+    "no-undef": "off"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Breed",
+      "value": "European short hair"
+    },
+    {
+      "trait_type": "Parent",
+      "value": "Alex Shenshin"
+    }
+  ],
+  "description": "Luna. Ginger kitty",
+  "image": "ipfs://QmZZfJcrppaRiq5dWtC6zpnGZRNoVwdyh69VoA89xGW5Yt",
+  "name": "Luna"
+}

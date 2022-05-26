@@ -6,7 +6,7 @@ async function queryDb(queryString, startDate, endDate) {
   const query = format(queryString, startDate, endDate);
   const queryResult = await dbPool.query(query);
   if (queryResult.rowCount === 0) return 0;
-  return queryResult.rows[0].count;
+  return Number(queryResult.rows[0].count);
 }
 
 export async function getDeploymentsNumber(startDate, endDate) {

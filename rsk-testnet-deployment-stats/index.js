@@ -1,7 +1,10 @@
 #! /usr/bin/env node
 import { parse } from 'path';
+import colors from 'colors';
 import { getDeploymentsNumber, getUniqueDeployersNumber } from './dbQueries.js';
 import dbPool from './dbPool.js';
+
+const { blue, green, red } = colors;
 
 function readDatesFromUserInput() {
   const startDateInput = process.argv[2];
@@ -27,9 +30,16 @@ async function main() {
       getUniqueDeployersNumber(startDate, endDate),
     ]);
     console.log(`
-    For the period from ${startDate.toDateString()} to ${endDate.toDateString()}
-    on the RSK Testnet there were ${totalDeployments} smart contract deployments
-    of which ${uniqueDeployments} were from unique addresses.
+    For the period
+    from: ${blue(startDate.toUTCString())}
+    to: ${blue(endDate.toUTCString())}
+    on the RSK Testnet there were ${
+      // colour red if zero or green otherwise
+      !totalDeployments ? red(totalDeployments) : green(totalDeployments)
+    } smart contract deployments
+    of which ${
+      !uniqueDeployments ? red(uniqueDeployments) : green(uniqueDeployments)
+    } were from unique addresses.
     `);
     process.exit(0);
   } catch (error) {

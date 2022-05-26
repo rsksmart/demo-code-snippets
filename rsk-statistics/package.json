@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "rsk-statistics",
+  "version": "1.0.0",
+  "description": "RSK testnet deployments statistics",
+  "main": "index.js",
+  "keywords": [
+    "rsk"
+  ],
+  "author": "Brendan Graetz, Aleks Shenshin",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "pg": "^8.7.3",
+    "pg-format": "^1.0.4"
+  }
+}

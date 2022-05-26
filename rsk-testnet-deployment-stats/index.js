@@ -1,19 +1,33 @@
 #! /usr/bin/env node
+import { parse } from 'path';
 import { getDeploymentsNumber, getUniqueDeployersNumber } from './dbQueries.js';
 import dbPool from './dbPool.js';
 
-const startDate = '2022-04-01 00:00';
-const endDate = '2022-05-01 00:00';
+function readDatesFromUserInput() {
+  const startDateInput = process.argv[2];
+  const endDateInput = process.argv[3];
+  const scriptName = parse(import.meta.url).base;
+  if (!(startDateInput && endDateInput))
+    throw new Error(`
+  Please specify start and end dates in the format:
+  ./${scriptName} startDate endDate
+    `);
+  // convert user input to Date objects
+  const startDate = new Date(startDateInput);
+  const endDate = new Date(endDateInput);
+  return [startDate, endDate];
+}
 
 async function main() {
   try {
-    const totalDeployments = await getDeploymentsNumber(startDate, endDate);
-    const uniqueDeployments = await getUniqueDeployersNumber(
-      startDate,
-      endDate,
-    );
+    const [startDate, endDate] = readDatesFromUserInput();
+    // send DB requests in parallel
+    const [totalDeployments, uniqueDeployments] = await Promise.all([
+      getDeploymentsNumber(startDate, endDate),
+      getUniqueDeployersNumber(startDate, endDate),
+    ]);
     console.log(`
-    For the period from ${startDate} to ${endDate}
+    For the period from ${startDate.toDateString()} to ${endDate.toDateString()}
     on the RSK Testnet there were ${totalDeployments} smart contract deployments
     of which ${uniqueDeployments} were from unique addresses.
     `);

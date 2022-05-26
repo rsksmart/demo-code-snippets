@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "rsk-statistics",
+  "name": "rsk-testnet-deployment-stats",
   "version": "1.0.0",
   "description": "RSK testnet deployments statistics",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "Brendan Graetz, Aleks Shenshin",
   "license": "GPL-3.0",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.1",
     "pg": "^8.7.3",
     "pg-format": "^1.0.4"

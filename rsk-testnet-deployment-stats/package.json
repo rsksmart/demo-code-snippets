@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "rsk-statistics",
+  "name": "rsk-testnet-deployment-stats",
   "version": "1.0.0",
   "description": "RSK testnet deployments statistics",
   "main": "index.js",

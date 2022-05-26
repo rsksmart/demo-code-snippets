@@ -11,7 +11,8 @@
 npm install
 ```
 ### How to use:
-Paste `startDate` and `endDate` constants at the top of `index.js` (under the `import` statesments) and type in the Terminal:
+- paste the dates your are interested in to the `startDate` and `endDate` constants at the top of `index.js` (under the `import` statesments) 
+- type in the Terminal:
 ```bash
 ./index.js
 ```

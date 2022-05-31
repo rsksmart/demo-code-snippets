@@ -1,7 +1,12 @@
 # RSK StackOverflow statistics
+Stackoverflow questions and answers about developing on RSK
 
 ### Script calculates:
-- Number of views on Stackoverflow Q&A about developing on RSK
+- Total questions count
+- Total answers count
+- Total views (of questions) count
+- Total question votes count
+- Total answer votes count
 
 ### Installation:
 - install the dependencies:

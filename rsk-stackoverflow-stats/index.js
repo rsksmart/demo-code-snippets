@@ -8,7 +8,9 @@ colors.enable();
 // repeats until it responds with `has_more: false`
 async function fetchAllItems(url) {
   let itemList = [];
-  const fetchSequentially = async (pageNumber = 1) => {
+  // pagination page number will be incremented on each API call
+  let pageNumber = 1;
+  const fetchSequentially = async () => {
     // add pagination to the URL
     const apiUrl = `${url}&page=${pageNumber}`;
     const response = await axios.get(apiUrl);
@@ -22,26 +24,53 @@ async function fetchAllItems(url) {
     }
     itemList = [...itemList, ...items];
     if (hasMore) {
-      await fetchSequentially(pageNumber + 1);
+      pageNumber += 1;
+      await fetchSequentially();
     }
   };
   await fetchSequentially();
   return itemList;
 }
 
+// creates API URL query string from the basename and parameters
+const assembleApiUrl = (
+  apiBase = 'https://api.domain.com',
+  apiParams = { key: 'value' },
+) =>
+  `${apiBase}?${Object.entries(apiParams).reduce(
+    (previous, [key, value], index) =>
+      `${previous}${index !== 0 ? '&' : ''}${key}=${value}`,
+    '',
+  )}`;
+
 async function getQuestions() {
-  const apiUrl = `https://api.stackexchange.com/2.3/search/advanced?pagesize=100&order=desc&sort=creation&tagged=rsk&site=stackoverflow&filter=!Oev7Wya51xkPXz3rxkrnxh_FQIK9DTSdjn0iuhbW(kx`;
+  /* 
+  documentation to the API:
+  https://api.stackexchange.com/docs/advanced-search#pagesize=100&order=desc&sort=creation&tagged=rsk&filter=!Oev7Wya51xkPXz3rxkrnxh_FQIK9DTSdjn0iuhbW(kx&site=stackoverflow&run=true
+  */
+  const apiBase = 'https://api.stackexchange.com/2.3/search/advanced';
+  const apiParams = {
+    pagesize: 100,
+    order: 'desc',
+    sort: 'creation',
+    tagged: 'rsk',
+    site: 'stackoverflow',
+    filter: '!Oev7Wya51xkPXz3rxkrnxh_FQIK9DTSdjn0iuhbW(kx',
+  };
+  const apiUrl = assembleApiUrl(apiBase, apiParams);
   const questionList = await fetchAllItems(apiUrl);
   return questionList;
 }
 
 // returns info for the answers corresponding to the questions in the list
 async function getAnswers(questionList = []) {
+  /* 
+  documentation to the API:
+  https://api.stackexchange.com/docs/answers-on-questions#order=desc&sort=activity&ids=72356857&filter=!1zIEd5kV.QgWdsoiy5EJ9&site=stackoverflow&run=true
+  */
   let answers = [];
   // keep only IDs from the question list
   const questionIds = questionList.map((question) => question.question_id);
-  // documentation to the API
-  // https://api.stackexchange.com/docs/answers-on-questions#order=desc&sort=activity&ids=72356857&filter=!1zIEd5kV.QgWdsoiy5EJ9&site=stackoverflow&run=true
   // instead of quering each question for answers, I can provide a semicolon
   // delimited list of ids and query them simultaneously in one request
   const fetchAnswersInPortions = async () => {
@@ -53,7 +82,14 @@ async function getAnswers(questionList = []) {
       // doc: {ids} can contain up to 100 semicolon delimited ids.
       const setOfIds = portion.join(';');
       // Gets the answers to a set of questions identified in id.
-      const apiUrl = `https://api.stackexchange.com/2.3/questions/${setOfIds}/answers?order=desc&sort=activity&site=stackoverflow&filter=!1zIEd5kV.QgWdsoiy5EJ9`;
+      const apiBase = `https://api.stackexchange.com/2.3/questions/${setOfIds}/answers`;
+      const apiParams = {
+        order: 'desc',
+        sort: 'activity',
+        site: 'stackoverflow',
+        filter: '!1zIEd5kV.QgWdsoiy5EJ9',
+      };
+      const apiUrl = assembleApiUrl(apiBase, apiParams);
       const answerList = await fetchAllItems(apiUrl);
       // add to previously fetched answers
       answers = [...answers, ...answerList];

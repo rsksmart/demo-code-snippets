@@ -37,11 +37,9 @@ const assembleApiUrl = (
   apiBase = 'https://api.domain.com',
   apiParams = { key: 'value' },
 ) =>
-  `${apiBase}?${Object.entries(apiParams).reduce(
-    (previous, [key, value], index) =>
-      `${previous}${index !== 0 ? '&' : ''}${key}=${value}`,
-    '',
-  )}`;
+  `${apiBase}?${Object.entries(apiParams)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&')}`;
 
 async function getQuestions() {
   /* 
@@ -58,6 +56,7 @@ async function getQuestions() {
     filter: '!Oev7Wya51xkPXz3rxkrnxh_FQIK9DTSdjn0iuhbW(kx',
   };
   const apiUrl = assembleApiUrl(apiBase, apiParams);
+  console.log(apiUrl);
   const questionList = await fetchAllItems(apiUrl);
   return questionList;
 }

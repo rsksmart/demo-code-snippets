@@ -56,7 +56,6 @@ async function getQuestions() {
     filter: '!Oev7Wya51xkPXz3rxkrnxh_FQIK9DTSdjn0iuhbW(kx',
   };
   const apiUrl = assembleApiUrl(apiBase, apiParams);
-  console.log(apiUrl);
   const questionList = await fetchAllItems(apiUrl);
   return questionList;
 }

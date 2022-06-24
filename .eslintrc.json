@@ -15,7 +15,16 @@
     "rules": {
       "import/extensions": "off",
       "no-console": "off",
-      "prettier/prettier": ["error"]
+      "prettier/prettier": ["error"],
+      "import/no-extraneous-dependencies": "off"
+    },
+    "globals": {
+      "hre": "readonly",
+      "ethers": "readonly",
+      "describe":"readonly",
+      "before":"readonly",
+      "it": "readonly",
+      "task": "readonly"
     },
     "root": true
 }

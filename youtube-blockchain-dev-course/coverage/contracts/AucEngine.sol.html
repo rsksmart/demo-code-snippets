@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/AucEngine.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> AucEngine.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.35% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.17% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/24</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+&nbsp;
+contract AucEngine {
+  address public owner;
+  // constant - must be assigned at the declaration and can't be changed
+  // immutable - can be assigned in the constructor
+  uint constant DURATION = 2 days; // being converted into seconds
+  uint constant FEE = 10; // %
+  struct Auction {
+    address payable seller;
+    uint startingPrice;
+    uint finalPrice;
+    uint startAt; // time
+    uint endAt;
+    uint discountRate; // на сколко цена падает за каждую секунду
+    string item; // what we sell
+    bool stopped; // whether the auction is finished or not
+  }
+  Auction[] public auctions;
+  event AuctionCreated(uint index, string itemName, uint startingPrice, uint duration);
+  event AuctionEnded(uint index, uint finalPrice, address winner);
+  constructor() {
+    owner = msg.sender;
+  }
+&nbsp;
+// calldata - immutable thing, being stored in memory
+<span class="fstat-no" title="function not covered" >  function createAuction(uint _startingPrice, uint _discountRate, string calldata _item, uint _duration ) external {</span>
+<span class="cstat-no" title="statement not covered" >    uint duration = _duration == 0 ? DURATION : _duration;</span>
+    // prevent price from turning negative
+<span class="cstat-no" title="statement not covered" >    require(_startingPrice &gt;= _discountRate * duration, "increase starting price")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    Auction memory newAuction = Auction({</span>
+      seller: payable(msg.sender),
+      startingPrice: _startingPrice,
+      finalPrice: _startingPrice,
+      startAt: block.timestamp, // sec
+      endAt: block.timestamp + duration, // sec
+      discountRate: _discountRate,
+      item: _item,
+      stopped: false
+      // what about adding a winner here
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    auctions.push(newAuction)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    emit AuctionCreated(auctions.length - 1, _item, _startingPrice, duration);</span>
+  }
+<span class="fstat-no" title="function not covered" >  modifier notStopped(uint index) {</span>
+<span class="cstat-no" title="statement not covered" >    require(!auctions[index].stopped, "stopped!")</span>;
+    _;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getPriceFor(uint index) public view notStopped(index) returns(uint) {</span>
+<span class="cstat-no" title="statement not covered" >    Auction memory cAuction = auctions[index];</span>
+<span class="cstat-no" title="statement not covered" >    uint elapsed = block.timestamp - cAuction.startAt;</span>
+<span class="cstat-no" title="statement not covered" >    uint discount = elapsed * cAuction.discountRate;</span>
+<span class="cstat-no" title="statement not covered" >    return cAuction.startingPrice - discount;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function buy(uint index) external payable notStopped(index) {</span>
+<span class="cstat-no" title="statement not covered" >    Auction storage cAuction = auctions[index];</span>
+<span class="cstat-no" title="statement not covered" >    require(cAuction.endAt &gt; block.timestamp, "time's up")</span>;
+<span class="cstat-no" title="statement not covered" >    uint cPrice = getPriceFor(index);</span>
+<span class="cstat-no" title="statement not covered" >    require(msg.value &gt;= cPrice, "payment insufficient")</span>;
+<span class="cstat-no" title="statement not covered" >    cAuction.stopped = true</span>;
+<span class="cstat-no" title="statement not covered" >    cAuction.finalPrice = cPrice</span>;
+<span class="cstat-no" title="statement not covered" >    uint refund = msg.value - cPrice;</span>
+    // отправить остаток денег назад покупателю
+<span class="cstat-no" title="statement not covered" >    if (refund &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >      payable(msg.sender).transfer(refund)</span>;
+    }
+    // отправить устроителю аукциона его выручку минус комиссия
+<span class="cstat-no" title="statement not covered" >    uint comission = (cPrice * FEE) / 100;</span>
+<span class="cstat-no" title="statement not covered" >    cAuction.seller.transfer(cPrice - comission)</span>;
+<span class="cstat-no" title="statement not covered" >    emit AuctionEnded(index, cPrice, msg.sender);</span>
+  }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 15 2022 23:43:02 GMT+0200 (Central European Summer Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

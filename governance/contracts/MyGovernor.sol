@@ -11,16 +11,23 @@ contract MyGovernor is Governor, GovernorCompatibilityBravo, GovernorVotes, Gove
     constructor(IVotes _token, TimelockController _timelock)
         Governor("MyGovernor")
         GovernorVotes(_token)
-        GovernorVotesQuorumFraction(4)
+        GovernorVotesQuorumFraction(1)
         GovernorTimelockControl(_timelock)
     {}
+
+    function quorumReached(uint proposalId) external view returns(bool) {
+      return _quorumReached(proposalId);
+    }
+    function voteSucceeded(uint proposalId) external view returns(bool) {
+      return _voteSucceeded(proposalId);
+    }
 
     function votingDelay() public pure override returns (uint256) {
         return 0; // 6575 - 1 day
     }
 
     function votingPeriod() public pure override returns (uint256) {
-        return 46027; // 46027 - 1 week
+        return 8; // 46027 - 1 week
     }
 
     function proposalThreshold() public pure override returns (uint256) {

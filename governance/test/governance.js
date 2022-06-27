@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
 const rifAbi = require('./rif-abi.json');
@@ -9,16 +10,18 @@ describe('Governance', () => {
   let proposer;
   let voter1;
   let voter2;
+  let voter3;
+  let voter4;
   let rif;
   let rifVote;
   let timelockController;
   let governor;
 
-  const rifTotalSupply = 10; // should be even
-  const minDelay = 0;
+  const rifTotalSupply = 100;
 
   before(async () => {
-    [deployer, proposer, voter1, voter2] = await ethers.getSigners();
+    [deployer, proposer, voter1, voter2, voter3, voter4] =
+      await ethers.getSigners();
     // getting test RIF token smart contract
     if (hre.network.name === 'rsktestnet') {
       rif = await ethers.getContractAt(rifAbi, rifTestnetAddress, deployer);
@@ -34,6 +37,7 @@ describe('Governance', () => {
     const TimeLockController = await ethers.getContractFactory(
       'MyTimelockController',
     );
+    const minDelay = 0;
     timelockController = await TimeLockController.deploy(
       minDelay,
       [ethers.constants.AddressZero],
@@ -60,18 +64,10 @@ describe('Governance', () => {
     });
 
     it('Should transfer RIFVote tokens from deployer to voters', async () => {
-      await rifVote
-        .transfer(voter1.address, rifTotalSupply / 2)
-        .then((tx) => tx.wait());
-      await rifVote
-        .transfer(voter2.address, rifTotalSupply / 2)
-        .then((tx) => tx.wait());
-      expect(await rifVote.balanceOf(voter1.address)).to.equal(
-        rifTotalSupply / 2,
-      );
-      expect(await rifVote.balanceOf(voter2.address)).to.equal(
-        rifTotalSupply / 2,
-      );
+      await rifVote.transfer(voter1.address, 20).then((tx) => tx.wait());
+      await rifVote.transfer(voter2.address, 30).then((tx) => tx.wait());
+      await rifVote.transfer(voter3.address, 50).then((tx) => tx.wait());
+      expect(await rifVote.balanceOf(voter1.address)).to.equal(20);
     });
   });
 
@@ -79,12 +75,12 @@ describe('Governance', () => {
     let transferCalldata;
     let proposalId;
     const proposalDescription = 'Proposal #1: Give grant to team';
+    const support = 0;
 
     it('Proposer should be able to create a proposal', async () => {
-      const grantAmount = 100;
       transferCalldata = rifVote.interface.encodeFunctionData('transfer', [
         proposer.address,
-        grantAmount,
+        rifTotalSupply,
       ]);
       const proposeSignature = 'propose(address[],uint256[],bytes[],string)';
       const tx = await governor
@@ -104,6 +100,17 @@ describe('Governance', () => {
       expect(args.description).to.equal(proposalDescription);
     });
 
+    it('Initial vote balances should be zero', async () => {
+      const voteBalance1 = await rifVote.getVotes(voter1.address);
+      const voteBalance2 = await rifVote.getVotes(voter2.address);
+      const voteBalance3 = await rifVote.getVotes(voter3.address);
+      const voteBalanceProposer = await rifVote.getVotes(proposer.address);
+      expect(voteBalance1).to.equal(0);
+      expect(voteBalance2).to.equal(0);
+      expect(voteBalance3).to.equal(0);
+      expect(voteBalanceProposer).to.equal(0);
+    });
+
     it('Token holders should not initially be delegated', async () => {
       expect(await rifVote.delegates(voter1.address)).to.equal(
         ethers.constants.AddressZero,
@@ -111,7 +118,7 @@ describe('Governance', () => {
       expect(await rifVote.delegates(voter2.address)).to.equal(
         ethers.constants.AddressZero,
       );
-      expect(await rifVote.delegates(deployer.address)).to.equal(
+      expect(await rifVote.delegates(voter3.address)).to.equal(
         ethers.constants.AddressZero,
       );
     });
@@ -124,6 +131,20 @@ describe('Governance', () => {
       await expect(rifVote.connect(voter2).delegate(voter2.address))
         .to.emit(rifVote, 'DelegateChanged')
         .withArgs(voter2.address, ethers.constants.AddressZero, voter2.address);
+
+      await expect(rifVote.connect(voter3).delegate(voter3.address))
+        .to.emit(rifVote, 'DelegateChanged')
+        .withArgs(voter3.address, ethers.constants.AddressZero, voter3.address);
+    });
+
+    it('Proposer with zero (0) tokens also can delegate himself', async () => {
+      await expect(rifVote.connect(proposer).delegate(proposer.address))
+        .to.emit(rifVote, 'DelegateChanged')
+        .withArgs(
+          proposer.address,
+          ethers.constants.AddressZero,
+          proposer.address,
+        );
     });
 
     it('Token holders should be delegated', async () => {
@@ -131,20 +152,33 @@ describe('Governance', () => {
       expect(await rifVote.delegates(voter2.address)).to.equal(voter2.address);
     });
 
+    it('Should set the vote balances after the delegation', async () => {
+      expect(await rifVote.getVotes(voter1.address)).to.equal(20);
+      expect(await rifVote.getVotes(voter2.address)).to.equal(30);
+      expect(await rifVote.getVotes(voter3.address)).to.equal(50);
+    });
+
+    it('Proposer vote balance should remain 0', async () => {
+      const proposerBalance = await rifVote.getVotes(proposer.address);
+      expect(proposerBalance).to.equal(0);
+    });
+
     it('Voter 1 should vote', async () => {
+      expect(await governor.hasVoted(proposalId, voter1.address)).to.be.false;
+
       const reason = 'because I am right';
-      const support = 0;
       const tx = governor
         .connect(voter1)
         .castVoteWithReason(proposalId, support, reason);
       await expect(tx)
         .to.emit(governor, 'VoteCast')
         .withArgs(voter1.address, proposalId, support, 0, reason);
+
+      expect(await governor.hasVoted(proposalId, voter1.address)).to.be.true;
     });
 
     it('Voter 2 should vote', async () => {
       const reason = 'because I am also right';
-      const support = 0;
       const tx = governor
         .connect(voter2)
         .castVoteWithReason(proposalId, support, reason);
@@ -153,16 +187,44 @@ describe('Governance', () => {
         .withArgs(voter2.address, proposalId, support, 0, reason);
     });
 
-    it('quorum', async () => {
-      const blockNumber = await ethers.provider.getBlockNumber();
-      const quorum = await governor.quorum(blockNumber - 1);
-      console.log(quorum);
+    it('Voter 3 should vote', async () => {
+      const reason = 'because I am also right';
+      const tx = governor
+        .connect(voter3)
+        .castVoteWithReason(proposalId, support, reason);
+      await expect(tx)
+        .to.emit(governor, 'VoteCast')
+        .withArgs(voter3.address, proposalId, support, 0, reason);
     });
 
-    /*  it('Propose', async () => {
+    it('Everybody can vote (why?)', async () => {
+      const reason = 'can I?';
+      const tx = governor
+        .connect(voter4)
+        .castVoteWithReason(proposalId, support, reason);
+      await expect(tx)
+        .to.emit(governor, 'VoteCast')
+        .withArgs(voter4.address, proposalId, support, 0, reason);
+    });
+
+    it('should reach the deadline', async () => {
+      const deadline = await governor.proposalDeadline(proposalId);
+      const { number } = await ethers.provider.getBlock();
+      expect(deadline).lte(number);
+    });
+
+    it('quorum reached. vote succeeded', async () => {
+      const { number } = await ethers.provider.getBlock();
+      console.log(await governor.quorum(number - 1));
+      const quorumReached = await governor.quorumReached(proposalId);
+      const voteSucceeded = await governor.voteSucceeded(proposalId);
+      console.log(quorumReached, voteSucceeded);
+    });
+
+    /* it('should queue the finished proposal', async () => {
       const descriptionHash = ethers.utils.id(proposalDescription);
       const queueSignature = 'queue(address[],uint256[],bytes[],bytes32)';
-      const tx = await governor[queueSignature](
+      await governor[queueSignature](
         [rifVote.address],
         [0],
         [transferCalldata],

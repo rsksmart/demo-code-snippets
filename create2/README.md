@@ -5,6 +5,9 @@ This project demonstrates how to calculate the smart contract address before the
 - Test 1 demostrates the address calculation in a standard way
 - Test 2 shows the CREATE2 method. It selects the salt in such a way that the future address will start with 4 leading zeros
 
+## Installation
+Rename `.template.secret.json` from the repo root to `.secret.json` and put there your accounts seed phrase
+
 ```shell
 nvm use 18
 npm install

@@ -16,7 +16,8 @@
       "import/extensions": "off",
       "no-console": "off",
       "prettier/prettier": ["error"],
-      "import/no-extraneous-dependencies": "off"
+      "import/no-extraneous-dependencies": "off",
+      "no-unused-expressions": "off"
     },
     "globals": {
       "hre": "readonly",

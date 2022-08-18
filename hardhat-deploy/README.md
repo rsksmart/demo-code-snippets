@@ -2,6 +2,7 @@
 
 This project demonstrates how to make use of [hardhat-deploy](https://www.npmjs.com/package/hardhat-deploy) Hardhat plugin in order to: 
 - deploy 2 smart contracts sequentially to Hardhat / RSK testnet
+- call a function on the smart smart contract right after the deployment
 - test smart contracts using deployment fixture
 
 

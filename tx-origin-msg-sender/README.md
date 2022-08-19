@@ -1,13 +1,14 @@
-# Sample Hardhat Project
+# Restricting EOA / smart contracts access to functions of other smart contracts
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates how to restrict EOA / contracts access to smart contract functions by comparing `msg.sender` and `tx.origin`
 
-Try running some of the following tasks:
+## Installation
 
 ```shell
-npx hardhat help
+npm install
+```
+## Testing
+
+```shell
 npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
 ```

@@ -12,5 +12,8 @@
   "dependencies": {
     "@0xsequence/multicall": "^0.42.9",
     "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
   }
 }

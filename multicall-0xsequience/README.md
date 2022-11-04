@@ -2,4 +2,7 @@
 
 ## TODO: write the details
 
-The script `index.js` and all its imports are packed into one file `bundle.js` with [Browserify](https://browserify.org/). Browserify is not needed to run the demo, however you will need to install it globally if you want to modify anything and then run.
+Before running the demo project create a browser bundle:
+```shell
+npm run build
+```

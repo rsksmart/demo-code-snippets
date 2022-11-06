@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use multicall to display RSK balances</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="connect-prompt">
+      <p>Connect your wallet</p>
+      <button id="connect-wallet-button">Connect your wallet</button>
+    </div>
+    <div id="dashboard" class="hidden">
+      <p>Wallet: <span id="wallet-address"></span></p>
+      <p>Wallet balance: <span id="rbtc-balance"></span></p>
+      <p>RIF balance: <span id="rif-balance"></span></p>
+      <p>RIF decimals: <span id="rif-decimals"></span></p>
+      <p>RIF total supply: <span id="rif-supply"></span></p>
+      <button id="track-balances-button">Query Multicall provider</button>
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>

@@ -8,9 +8,9 @@ let web3Provider;
 let multicallProvider;
 let chainId;
 let walletAddress;
+let rbtcBalance;
 // RIF token
 let rif;
-let rbtcBalance;
 let rifBalance;
 let rifDecimals;
 let rifSupply;
@@ -26,20 +26,21 @@ function showDashboard() {
 }
 
 function displayData() {
-  const rifDenominator = ethers.BigNumber.from(10).pow(rifDecimals);
   document.getElementById('wallet-address').innerHTML = walletAddress;
   document.getElementById('rbtc-balance').innerHTML =
     ethers.utils.formatEther(rbtcBalance);
+  const rifDenominator = ethers.BigNumber.from(10).pow(rifDecimals);
   document.getElementById('rif-balance').innerHTML =
     rifBalance.div(rifDenominator);
   document.getElementById('rif-decimals').innerHTML = rifDecimals;
   document.getElementById('rif-supply').innerHTML =
     rifSupply.div(rifDenominator);
+  const rdocDenominator = ethers.BigNumber.from(10).pow(rdocDecimals);
   document.getElementById('rdoc-balance').innerHTML =
-    rdocBalance.div(rifDenominator);
+    rdocBalance.div(rdocDenominator);
   document.getElementById('rdoc-decimals').innerHTML = rdocDecimals;
   document.getElementById('rdoc-supply').innerHTML =
-    rdocSupply.div(rifDenominator);
+    rdocSupply.div(rdocDenominator);
 }
 
 function connectSmartContracts() {

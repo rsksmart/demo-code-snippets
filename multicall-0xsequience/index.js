@@ -1,31 +1,24 @@
 const { ethers } = require('ethers');
 const { providers } = require('@0xsequence/multicall');
-const RifToken = require('./contracts/31/RIFToken.json');
-
-const multicallConfig = {
-  // RSK Testnet
-  31: {
-    // maximum number of calls to batch into a single JSON-RPC call
-    batchSize: 50,
-    // defines the time each call is held on buffer waiting for subsequent calls before aggregation, ms
-    timeWindow: 50,
-    /* 
-    0xsequience MultiCall
-    https://github.com/0xsequence/wallet-contracts/blob/master/src/contracts/modules/utils/MultiCallUtils.sol
-    deployed at RSK Testnet
-    https://explorer.testnet.rsk.co/address/0xb39d1dea1bf91aef02484f677925904b9d6936b4?__ctab=Code
-    */
-    contract: '0xb39d1Dea1bF91Aef02484F677925904b9d6936B4',
-  },
-};
+const RIF = require('./contracts/RIFToken.json');
+const RDOC = require('./contracts/RDOC.json');
+const multicallConfig = require('./multicall-config.js');
 
 let web3Provider;
 let multicallProvider;
+let chainId;
 let walletAddress;
+// RIF token
+let rif;
 let rbtcBalance;
 let rifBalance;
 let rifDecimals;
 let rifSupply;
+// RDOC token
+let rdoc;
+let rdocBalance;
+let rdocDecimals;
+let rdocSupply;
 
 function showDashboard() {
   document.getElementById('connect-prompt').classList.add('hidden');
@@ -42,6 +35,28 @@ function displayData() {
   document.getElementById('rif-decimals').innerHTML = rifDecimals;
   document.getElementById('rif-supply').innerHTML =
     rifSupply.div(rifDenominator);
+  document.getElementById('rdoc-balance').innerHTML =
+    rdocBalance.div(rifDenominator);
+  document.getElementById('rdoc-decimals').innerHTML = rdocDecimals;
+  document.getElementById('rdoc-supply').innerHTML =
+    rdocSupply.div(rifDenominator);
+}
+
+function connectSmartContracts() {
+  // connect to RIF token smart contract
+  rif = new ethers.Contract(
+    RIF.addresses[chainId].toLowerCase(),
+    RIF.abi,
+    // connect s/c to multicall provider instead of web3 provider
+    // to be able make aggregated calls
+    multicallProvider,
+  );
+  // connect RDOC token smart contract
+  rdoc = new ethers.Contract(
+    RDOC.addresses[chainId].toLowerCase(),
+    RDOC.abi,
+    multicallProvider,
+  );
 }
 
 // connect Metamask, ethers.js and Multicall providers
@@ -51,36 +66,37 @@ async function connectProviders() {
   });
   web3Provider = new ethers.providers.Web3Provider(window.ethereum);
   [walletAddress] = await web3Provider.listAccounts();
-  const { chainId } = await web3Provider.getNetwork();
+  chainId = (await web3Provider.getNetwork()).chainId;
   const config = multicallConfig[chainId];
   if (!config)
     throw new Error(`Unknown multicall config for the chain ${chainId}`);
   multicallProvider = new providers.MulticallProvider(web3Provider, config);
+  connectSmartContracts();
 
   showDashboard();
 }
 
 async function makeAggregatedCall() {
-  // connect to RIF token smart contract
-  const rifToken = new ethers.Contract(
-    RifToken.address.toLowerCase(),
-    RifToken.abi,
-    // connect s/c to multicall provider instead of web3 provider
-    // to be able make aggregated calls
-    multicallProvider,
-  );
-
   // construct aggregated call
   // all function calls are made via multicall provider
   const aggregatedCall = [
     multicallProvider.getBalance(walletAddress),
-    rifToken.balanceOf(walletAddress),
-    rifToken.decimals(),
-    rifToken.totalSupply(),
+    rif.balanceOf(walletAddress),
+    rif.decimals(),
+    rif.totalSupply(),
+    rdoc.balanceOf(walletAddress),
+    rdoc.decimals(),
+    rdoc.totalSupply(),
   ];
-  [rbtcBalance, rifBalance, rifDecimals, rifSupply] = await Promise.all(
-    aggregatedCall,
-  );
+  [
+    rbtcBalance,
+    rifBalance,
+    rifDecimals,
+    rifSupply,
+    rdocBalance,
+    rdocDecimals,
+    rdocSupply,
+  ] = await Promise.all(aggregatedCall);
 
   displayData();
 }

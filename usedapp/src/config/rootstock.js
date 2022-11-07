@@ -43,19 +43,3 @@ export const RootstockMainnet = {
   getExplorerAddressLink: getAddressLink(rootstockMainnetExplorerUrl),
   getExplorerTransactionLink: getTransactionLink(rootstockMainnetExplorerUrl),
 };
-
-export const RootstockRegtest = {
-  chainId: 33,
-  chainName: 'Rootstock Regtest',
-  isTestChain: true,
-  isLocalChain: true,
-  rpcUrl: 'http://localhost:4444',
-  multicallAddress: '',
-  nativeCurrency: {
-    name: 'Test Rootstock Bitcoin',
-    symbol: 'tRBTC',
-    decimals: 18,
-  },
-  getExplorerAddressLink: () => '',
-  getExplorerTransactionLink: () => '',
-};

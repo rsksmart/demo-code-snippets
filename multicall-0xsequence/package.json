@@ -6,9 +6,15 @@
   "scripts": {
     "build": "npx browserify index.js -o bundle.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "Solidity",
+    "multicall",
+    "DApp"
+  ],
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "dependencies": {
     "@0xsequence/multicall": "^0.42.9",
     "ethers": "^5.7.2"

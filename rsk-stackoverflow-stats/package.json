@@ -7,9 +7,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "StackOverflow"
+  ],
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
     "colors": "^1.4.0"

@@ -9,9 +9,13 @@
     "hardhat": "npx hardhat test --network hardhat",
     "test": "npm run regtest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "Hardhat"
+  ],
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.3",

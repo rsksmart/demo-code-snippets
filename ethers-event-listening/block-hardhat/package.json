@@ -1,5 +1,7 @@
 {
   "name": "hardhat-project",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.3",

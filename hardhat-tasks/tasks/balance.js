@@ -36,7 +36,7 @@ async function printTokenBalance(tokenName, address) {
 
 /**
  * `balance` task
- * Custom Hardhat task to display RBTC and token balances balances
+ * Custom Hardhat task to display RBTC and token balances
  */
 module.exports = task('balance', 'Displays RBTC and token balances')
   /**

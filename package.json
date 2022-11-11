@@ -11,10 +11,11 @@
     "url": "git+https://github.com/rsksmart/demo-code-snippets.git"
   },
   "keywords": [
-    "rsk"
+    "RSK",
+    "Rootstock"
   ],
-  "author": "Brendan Graetz, Aleks Shenshin",
-  "license": "GPL-3.0",
+  "author": "Brendan Graetz, Aleksandr Shenshin",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rsksmart/demo-code-snippets/issues"
   },

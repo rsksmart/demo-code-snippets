@@ -1,7 +1,15 @@
 {
   "name": "usedapp",
   "version": "0.1.0",
-  "private": true,
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "react",
+    "useDApp",
+    "DApp"
+  ],
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

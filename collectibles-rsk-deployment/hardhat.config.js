@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 require('@nomiclabs/hardhat-waffle');
 const mnemonic = require('./utils').readMnemonic();
 const { deployContracts, writeDeployments, mintNfts } = require('./utils');

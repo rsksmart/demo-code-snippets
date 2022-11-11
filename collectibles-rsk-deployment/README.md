@@ -1,6 +1,6 @@
 # How to deploy collectible NFTs to RSK
 
-- (Pinata)[https://app.pinata.cloud/] is an IPFS cloud gateway. Create an acount and upload the images of future NFTs. Remember the image CIDs
+- [Pinata](https://app.pinata.cloud/) is an IPFS cloud gateway. Create an acount and upload the images of future NFTs. Remember the image CIDs
 - create metadata for the NFTs. See the JSON examples in `nft-metadata` folder. Put your image CIDs to the JSON `image` property
 - upload JSON metadata files to Pinata and store their CIDs. Paste these CIDs into a file `project.config.js` to `newCIDsToMint` property
 - switch to node.js 12 and install Hardhat and the project

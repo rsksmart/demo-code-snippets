@@ -5,10 +5,12 @@
   "description": "RSK testnet deployments statistics",
   "main": "index.js",
   "keywords": [
-    "rsk"
+    "RSK",
+    "Rootstock",
+    "SQL"
   ],
-  "author": "Brendan Graetz, Aleks Shenshin",
-  "license": "GPL-3.0",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",

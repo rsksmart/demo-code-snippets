@@ -6,9 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["RSK"],
-  "author": "Aleks Shenshin",
-  "license": "GPL-3.0",
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "SQL"
+  ],
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.1",
     "pg": "^8.8.0",

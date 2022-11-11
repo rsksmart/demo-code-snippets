@@ -7,12 +7,13 @@
     "start": "./index.js"
   },
   "keywords": [
-    "rsk",
+    "RSK",
+    "Rootstock",
     "web3.js",
     "javascript"
   ],
-  "author": "Aleks Shenshin, Brendan Graetz",
-  "license": "GPL-3.0",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "axios": "^0.26.1",

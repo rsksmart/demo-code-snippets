@@ -6,9 +6,13 @@
   "scripts": {
     "test": "npx hardhat test --network rskregtest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "RSK",
+    "Rootstock",
+    "Hardhat"
+  ],
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-truffle5": "^2.0.5",
     "@nomiclabs/hardhat-web3": "^2.0.0",

@@ -1,5 +1,7 @@
 {
   "name": "hardhat-rsk-deployment",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
+  "license": "MIT",
   "scripts": {
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",

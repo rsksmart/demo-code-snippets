@@ -1,4 +1,4 @@
-# Vue.js DApp for connecting to Rootstock
+# Connecting to Rootstock from Vue.js DApp
 
 This demo repo shows how to use [vue.js](https://vuejs.org/guide/introduction.html) in order to:
 - connect to [Metamask](https://docs.metamask.io/guide/)

@@ -21,6 +21,7 @@ const sendRbtc = async () => {
     loading.value = `Sending tx: ${tx.hash}`;
     await tx.wait();
   } catch (error) {
+    // show error message in all cases except user has cancelled tx
     if (error.code !== 'ACTION_REJECTED') errorMessage.value = error.message;
   } finally {
     loading.value = '';

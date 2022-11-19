@@ -1,35 +1,25 @@
 # vue-ethers
 
-This template should help get you started developing with Vue 3 in Vite.
+This demo repo shows how to use [vue.js](https://vuejs.org/guide/introduction.html) in order to:
+- connect to [Metamask](https://docs.metamask.io/guide/)
+- connect Metamask to [ethers.js](https://docs.ethers.io/v5/) [Web3Provider](https://docs.ethers.io/v5/api/providers/other/#Web3Provider)
+- track RBTC balance of the connected wallet
+- send some RBTC to a specified address
 
-## Recommended IDE Setup
+The app includes the following main components:
+- `rootstock.js` a [Pinia storage](https://pinia.vuejs.org/introduction.html) incapsulating web3 provider instance and the connection / interaction logic. Keeping this data in one place allowes all app components to have direct access to the Rootstock blockchain data
+- `App.vue` - the main application component
+- `ConnectWallet.vue` - UI initiating Metamask wallet connection
+- `MessageBoard.vue` - UI showing error and loading statuses
+- `SendRbtc.vue` - UI and logic for sending a transaction to transfer RBTC to selected address
+- `WalletDashboard.vue` - UI showing the Rootstock blockchain data
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## Installation
+```shell
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+## Start the app
+```shell
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

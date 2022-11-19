@@ -1,5 +1,7 @@
 {
   "name": "vue-ethers",
+  "license": "MIT",
+  "author": "Aleksandr Shenshin, Brendan Graetz",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

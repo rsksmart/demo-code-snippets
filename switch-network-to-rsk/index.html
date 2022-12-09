@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to switch network to Rootstock programmatically in Metamask</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>How to switch network to Rootstock programmatically in Metamask</h1>
+  <div id="connect-prompt">
+    <h2>Connect your wallet to Rootstock</h2>
+    <button id="connect-testnet">Connect to Testnet</button>
+    <button id="connect-mainnet">Connect to Mainnet</button>
+  </div>
+  <div id="connected" class="hidden">
+    <h2>Connected Metamask to <span id="chain-name"></span></h2>
+    <p>Wallet address: <span id="wallet-address"></span></p>
+  </div>
+  <div class="error" id="error"></div>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+export const rskTestnet = {
+  chainName: 'Rootstock Testnet',
+  chainId: '0x1f',
+  rpcUrls: ['https://public-node.testnet.rsk.co'],
+  blockExplorerUrls: ['https://explorer.testnet.rsk.co/'],
+  nativeCurrency: {
+    symbol: 'tRBTC',
+    decimals: 18,
+  },
+};
+
+export const rskMainnet = {
+  chainName: 'Rootstock Mainnet',
+  chainId: '0x1e',
+  rpcUrls: ['https://public-node.rsk.co'],
+  blockExplorerUrls: ['https://explorer.rsk.co/'],
+  nativeCurrency: {
+    symbol: 'RBTC',
+    decimals: 18,
+  },
+};

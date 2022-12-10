@@ -7,6 +7,4 @@ A web page `index.html` allows to:
 - add the selected network to Metamask
 - switch to the newly added network
 
-Rootstock networks settings are in `networks.js`
-
-Run `index.html` in Live Server
+Find more details in a [walkthrough](./walkthrough.md)

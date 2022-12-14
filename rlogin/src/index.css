@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+}
+
+body {
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin: 0.8rem 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.message-field {
+  display: block;
+  width: 50%;
+  height: 3rem;
+}
+
+.to-address {
+  display: block;
+  width: 50%;
+}
+
+.loading {
+  color: green;
+  font-size: 1.5rem;
+}
+
+.error {
+  color: red;
+  font-size: 2rem;
+}

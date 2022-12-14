@@ -1,8 +1,6 @@
 import { useContext, useState } from 'react';
 import rLoginContext from '../contexts/rLoginContext';
 
-import React from 'react';
-
 function GetBalance() {
   const { provider, account, tryRequest } = useContext(rLoginContext);
 

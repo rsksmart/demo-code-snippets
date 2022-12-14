@@ -1,8 +1,6 @@
 import { useContext, useState } from 'react';
 import rLoginContext from '../contexts/rLoginContext';
 
-import React from 'react';
-
 function SignMessage() {
   const { provider, account, tryRequest } = useContext(rLoginContext);
 

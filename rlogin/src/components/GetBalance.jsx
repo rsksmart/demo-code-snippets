@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import rLoginContext from '../contexts/rLoginContext';
+import { utils } from 'ethers';
 
 function GetBalance() {
   const { provider, account, tryRequest } = useContext(rLoginContext);
@@ -12,8 +13,8 @@ function GetBalance() {
         method: 'eth_getBalance',
         params: [account],
       });
-      // convert hexidecimal wei value to RBTC
-      const rbtcBalance = parseInt(weiBalance, 16) / 10 ** 18;
+      // convert hexadecimal wei value to RBTC
+      const rbtcBalance = utils.formatEther(weiBalance);
       setBalance(rbtcBalance);
     });
   };

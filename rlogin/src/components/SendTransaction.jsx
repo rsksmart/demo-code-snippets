@@ -1,13 +1,12 @@
 import { useContext, useState } from 'react';
 import rLoginContext from '../contexts/rLoginContext';
-import { rskTestnet } from '../rskConfig';
 
 const faucetAddress = '0x88250f772101179a4ecfaa4b92a983676a3ce445';
 
 function SendTransaction() {
   const { provider, account, tryRequest } = useContext(rLoginContext);
 
-  const [toAddress, setToaddress] = useState(faucetAddress);
+  const [toAddress, setToAddress] = useState(faucetAddress);
   const [weiToSend, setWeiToSend] = useState('1000');
   const [txHash, setTxHash] = useState('');
 
@@ -38,21 +37,13 @@ function SendTransaction() {
       <input
         type="text"
         value={toAddress}
-        onChange={(e) => setToaddress(e.target.value)}
+        onChange={(e) => setToAddress(e.target.value)}
         className="to-address"
       />
       {txHash && (
         <div>
           <p>Transaction has been sent</p>
-          <p>
-            <a
-              href={`${rskTestnet.explorerUrl}/tx/${txHash}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              hash: {txHash}
-            </a>
-          </p>
+          <p>hash: {txHash}</p>
         </div>
       )}
       <button onClick={sendTransaction}>send transaction</button>

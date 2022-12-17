@@ -1,24 +1,9 @@
 import { useState } from 'react';
 import RLogin from '@rsksmart/rlogin';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 import RLoginContext from '../contexts/rLoginContext';
-import { rskTestnet } from '../rskConfig';
+import rLoginOptions from '../rLoginOptions';
 
-const rLogin = new RLogin({
-  cachedProvider: false, // change to true to cache user's wallet choice
-  providerOptions: {
-    // read more about providers setup in https://github.com/web3Modal/web3modal/
-    walletconnect: {
-      package: WalletConnectProvider, // setup wallet connect for mobile wallet support
-      options: {
-        rpc: {
-          [rskTestnet.chainId]: rskTestnet.rpcUrl,
-        },
-      },
-    },
-  },
-  supportedChains: [rskTestnet.chainId], // enable rsk testnet network
-});
+const rLogin = new RLogin(rLoginOptions);
 
 function RLoginProvider({ children }) {
   const [provider, setProvider] = useState(null);

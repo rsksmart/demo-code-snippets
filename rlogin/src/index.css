@@ -11,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   margin: 0.8rem 0;
   padding-top: 0.5rem;

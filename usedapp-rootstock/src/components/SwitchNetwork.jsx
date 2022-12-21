@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// NOTE this import is the significant one for this demo
 import { useEthers, RootstockMainnet, RootstockTestnet } from '@usedapp/core';
 
 function SwitchNetwork() {

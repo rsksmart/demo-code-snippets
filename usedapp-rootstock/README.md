@@ -1,6 +1,10 @@
 # Build on Rootstock with useDApp
 
-This demo repo shows how to build a DApp on Rootstock using [useDApp](https://usedapp.io/) React library
+This demo repo shows how to build a DApp on Rootstock using [useDApp](https://usedapp.io/) React library.
+Note that instead of specifying the configuration manually within the code,
+instead you can do the following, to obtain the configuration for Rootstock
+directly from useDApp package:
+`import { RootstockMainnet, RootstockTestnet } from '@usedapp/core';`
 
 ## App Components
 Different React components perform various tasks:

@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+}
+
+@mixin flex-container($gap: 1rem) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $gap;
+}
+
+.container {
+  @include flex-container;
+}
+
+.switch-networks {
+  @include flex-container($gap: 0.5rem);
+  input[type=radio] {
+    margin-right: 0.5rem;
+  }
+}
+
+.dashboard {
+  td:first-child {
+    padding-right: 1rem;
+  }
+}
+
+.send-rbtc {
+  @include flex-container($gap: 0.2rem);
+  input {
+    margin: 0 0.5rem;
+    &[type=text] {
+      width: 20rem;
+    }
+  }
+  button {
+    padding: 0 1rem;
+  }
+  p {
+    color: green;
+  }
+}

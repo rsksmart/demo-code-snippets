@@ -1,7 +1,11 @@
 {
   "name": "usedapp-rootstock",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "contributors": [
+    "Aleksandr Shenshin",
+    "Brendan Graetz"
+  ],
   "dependencies": {
     "@usedapp/core": "^1.2.3-dev.f3c2181",
     "ethers": "^5.7.2",

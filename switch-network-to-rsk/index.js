@@ -2,12 +2,8 @@ import { rskTestnet, rskMainnet } from './networks.js';
 
 async function connectProviderTo(network) {
   try {
-    // make sure Metamask is installed
-    if (!window.ethereum) throw new Error('Please install Metamask!');
-    // connect wallet
-    const [address] = await window.ethereum.request({
-      method: 'eth_requestAccounts',
-    });
+    // TODO: implement request accounts
+
     await switchToNetwork(network);
     showPage(network.chainName, address);
   } catch (error) {
@@ -18,26 +14,8 @@ async function connectProviderTo(network) {
 // see details in Metamask documentation:
 // https://docs.metamask.io/guide/rpc-api.html#wallet-addethereumchain
 async function switchToNetwork(network) {
-  try {
-    // trying to switch to a network already added to Metamask
-    await window.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: network.chainId }],
-    });
-    // catching specific error 4902
-  } catch (error) {
-    // this error code indicates that the chain has not been added to Metamask
-    if (error.code === 4902) {
-      // trying to add new chain to Metamask
-      await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [network],
-      });
-    } else {
-      // rethrow all other errors
-      throw error;
-    }
-  }
+  // TODO: implement network switching
+
   // make sure we switched
   const chainId = await window.ethereum.request({ method: 'eth_chainId' });
   if (chainId !== network.chainId)

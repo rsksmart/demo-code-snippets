@@ -1,0 +1,20 @@
+{
+  "name": "bytecode-to-opcodes",
+  "scripts": {
+    "test": "npx hardhat test test/basicToken.test.ts"
+  },
+  "keywords": [
+    "bytecode",
+    "opcodes"
+  ],
+  "contributors": [
+    "Alex Shenshin",
+    "Brendan Graetz"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@ethersproject/asm": "^5.7.0",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "hardhat": "^2.12.6"
+  }
+}

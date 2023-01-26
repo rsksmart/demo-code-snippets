@@ -1,7 +1,15 @@
 {
   "name": "front",
   "version": "0.1.0",
-  "private": true,
+  "description": "DApp demo with TS + TypeChain",
+  "keywords": [
+    "typechain",
+    "dapp"
+  ],
+  "contributors": [
+    "Alex Shenshin",
+    "Brendan Graetz"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

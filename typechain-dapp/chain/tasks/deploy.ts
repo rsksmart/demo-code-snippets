@@ -43,7 +43,7 @@ export default task('deploy', 'Deploys smart contracts')
       const initialSupply = parseInt(supply);
       if (isNaN(initialSupply)) throw new Error(`Wrong supply value ${supply}`);
       if (hre.network.name === 'hardhat')
-        throw new Error(`Use 'localhost' network for local tests`);
+        throw new Error(`Use 'localhost' network for local deployment`);
       await hre.run('compile');
       const ContractFactory = await hre.ethers.getContractFactory(token);
       const contract = await ContractFactory.deploy(initialSupply);

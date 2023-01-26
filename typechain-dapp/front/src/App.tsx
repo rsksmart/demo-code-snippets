@@ -8,10 +8,12 @@ function App() {
   const [address, setAddress] = useState('');
 
   const connect = async () => {
+    // connect to Metamask
     if (!window.ethereum) throw new Error('You need Metamask to run this app');
     await window.ethereum.request!({
       method: 'eth_requestAccounts',
     });
+    // wrap Metamask with ethers.js provider
     const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
     const [walletAddress] = await web3Provider.listAccounts();
     // instantiate MeowToken from TypeChain artifacts
@@ -19,16 +21,19 @@ function App() {
       deployment.address,
       web3Provider,
     );
+    // call one of the smart contract functions
     const meowBalance = await meowToken.balanceOf(walletAddress);
     setBalance(meowBalance.toString());
     setAddress(walletAddress);
   };
 
   if (!address) return <button onClick={connect}>Connect Metamask</button>;
-  return <div>
-    <p>Address: {address}</p>
-    <p>MeowToken balance: {balance}</p>
-  </div>;
+  return (
+    <div>
+      <p>Address: {address}</p>
+      <p>MeowToken balance: {balance}</p>
+    </div>
+  );
 }
 
 export default App;

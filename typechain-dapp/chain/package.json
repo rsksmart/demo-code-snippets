@@ -1,0 +1,27 @@
+{
+  "name": "chain",
+  "version": "1.0.0",
+  "description": "DApp demo with TS + TypeChain",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npx hardhat deploy --network rsktestnet"
+  },
+  "keywords": [
+    "typechain",
+    "dapp"
+  ],
+  "contributors": [
+    "Alex Shenshin",
+    "Brendan Graetz"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+    "@openzeppelin/contracts": "^4.8.1",
+    "@types/fs-extra": "^11.0.1",
+    "hardhat": "^2.12.6"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0"
+  }
+}

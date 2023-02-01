@@ -1,14 +1,17 @@
 {
-  "name": "solc-test",
+  "name": "bytecodes-compare",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Solidity deployed bytecodes comparison",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Rootstock",
+    "bytecode",
+    "Solidity"
+  ],
+  "author": "Alex Shenshin",
+  "license": "MIT",
   "dependencies": {
     "hardhat": "^2.12.6",
     "solc": "^0.8.17"

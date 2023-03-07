@@ -1,0 +1,21 @@
+{
+  "name": "force",
+  "version": "1.0.0",
+  "description": "Ethernaut challenge solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "keywords": [
+    "ethernaut",
+    "solidity",
+    "rootstock",
+    "rbtc"
+  ],
+  "author": "Alejandro Santander, Alex Shenshin",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.13.0"
+  }
+}
